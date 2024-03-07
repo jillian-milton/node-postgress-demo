@@ -2,5 +2,12 @@
 
 {% block content %}
   <h1>{{ title }}</h1>
-  <p>Edit <code>/views/index.njk</code> to modify this page.</p>
+
+  <ul>
+    {% for artist in rows %}
+    <li><a href="/artist/{{ artist.artist_id }}">{{ artist.name }}</a></li>
+    {% endfor %}
+  </ul>
+
+  
 {% endblock %}

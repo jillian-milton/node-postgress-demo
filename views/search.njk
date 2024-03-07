@@ -1,0 +1,49 @@
+{% extends "layouts/default.njk" %}
+
+{% block content %}
+
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <h1>{{ title }}</h1>
+        <form action="/" method="get">
+          <div class="form-group">
+            <label for="email">Search</label>
+            <input type="text" name="q" id="q" class="form-control" placeholder="type name of song" value="{{query}}" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <hr>
+
+        {% if rows.length > 0 %}
+          <h2>Results</h2>
+          {% for track in rows %}
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title" style="color: blue">{{ track.song }}</h5>
+                <p class="card-text">By: {{ track.artist }}</p>
+                <h5 class="card-title">Album: {{ track.album }}</h5>
+                {# <a href="/song/{{ row.id }}" class="btn btn-primary">View</a> #}
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <h2>No results</h2>
+        {% endif %}
+      </div>
+    </div>
+
+
+    </section>
+  
+
+  
+{% endblock %}
